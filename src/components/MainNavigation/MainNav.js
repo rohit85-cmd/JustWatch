@@ -40,7 +40,6 @@ export default function SimpleBottomNavigation() {
       value={value}
       onChange={(event, newValue) => {
         setValue(newValue);
-        console.log("value ", newValue);
       }}
       showLabels
       className={classes.root}

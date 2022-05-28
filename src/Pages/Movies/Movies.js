@@ -12,8 +12,10 @@ const Movies = () => {
 
   const fetchMovies = async () => {
     const res = await axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_THEMOVIEDB_API_KEY}&language=en-US&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&page=${page}`
     );
+    console.log(res)
+      console.log(res.data.total_pages)
     setContent(res.data.results);
     setNumOfPages(res.data.total_pages);
   };
@@ -37,15 +39,15 @@ const Movies = () => {
       /> */}
       <div className="trending">
         {content &&
-          content.map((c) => (
+          content.map((item) => (
             <SingleContent
-              key={c.id}
-              id={c.id}
-              poster={c.poster_path}
-              title={c.title || c.name}
-              date={c.first_air_date || c.release_date}
+              key={item.id}
+              id={item.id}
+              poster={item.poster_path}
+              title={item.title || item.name}
+              date={item.first_air_date || item.release_date}
               media_type="movie"
-              vote_average={c.vote_average}
+              vote_average={item.vote_average}
             />
           ))}
       </div>

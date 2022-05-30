@@ -6,7 +6,9 @@ import TvIcon from "@material-ui/icons/Tv";
 import MovieIcon from "@material-ui/icons/Movie";
 import SearchIcon from "@material-ui/icons/Search";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { useHistory } from "react-router-dom";
+import { Paper } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -16,54 +18,83 @@ const useStyles = makeStyles({
     backgroundColor: "#2d313a",
     zIndex: 100,
   },
+  
 });
 
 export default function SimpleBottomNavigation() {
+  
   const classes = useStyles();
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState("trending");
   const history = useHistory();
 
   useEffect(() => {
-    if (value === 0) {
+    if (value === "trending") {
       history.push("/");
-    } else if (value === 1) {
+    } else if (value === "movies") {
       history.push("/movies");
-    } else if (value === 2) {
+    } else if (value === "tvSeries") {
       history.push("/series");
-    } else if (value === 3) {
+    } else if (value === "favourites") {
+      history.push("/favourites");
+    } else if (value === "search") {
       history.push("/search");
     }
   }, [value, history]);
 
+  
+
   return (
-    <BottomNavigation
+
+      <BottomNavigation
       value={value}
       onChange={(event, newValue) => {
         setValue(newValue);
+        console.log("value", value);
       }}
-      showLabels
       className={classes.root}
     >
       <BottomNavigationAction
+        
         style={{ color: "white" }}
+
         label="Trending"
+        value="trending"
         icon={<WhatshotIcon />}
+        
       />
       <BottomNavigationAction
         style={{ color: "white" }}
+        
         label="Movies"
+        value="movies"
         icon={<MovieIcon />}
+        
       />
       <BottomNavigationAction
         style={{ color: "white" }}
+        
         label="TV Series"
+        value="tvSeries"
+      
         icon={<TvIcon />}
       />
+
+      <BottomNavigationAction
+        style={{ color: "white" }}
+        label="Favourites"
+        value="favourites"
+        icon={<FavoriteBorderIcon />}
+        
+      />
+
       <BottomNavigationAction
         style={{ color: "white" }}
         label="Search"
+        value="search"
         icon={<SearchIcon />}
+        
       />
     </BottomNavigation>
+
   );
 }

@@ -8,7 +8,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { useHistory } from "react-router-dom";
-import { Paper } from "@material-ui/core";
+
 
 const useStyles = makeStyles({
   root: {
@@ -48,8 +48,9 @@ export default function SimpleBottomNavigation() {
       <BottomNavigation
       value={value}
       onChange={(event, newValue) => {
-        setValue(newValue);
         console.log("value", value);
+        setValue(newValue);
+        
       }}
       className={classes.root}
     >

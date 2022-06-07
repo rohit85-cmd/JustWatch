@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import SingleContent from "../../components/SingleCardContent/SingleCard";
 import CustomPagination from "../../components/CustomPagination/Pagination";
 import Genres from "../../components/Genres/Genres";
+import useGenre from "../../hook/useGenre";
 
 const Movies = () => {
   const [page, setPage] = useState(1);
@@ -10,9 +11,10 @@ const Movies = () => {
   const [numOfPages, setNumOfPages] = useState();
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [genres, setGenres] = useState([]);
+  const genreforURL = useGenre(selectedGenres);
   const fetchMovies = async () => {
     const res = await axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_THEMOVIEDB_API_KEY}&language=en-US&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_THEMOVIEDB_API_KEY}&language=en-US&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate&with_genres=${genreforURL}`
     );
 
     setContent(res.data.results);
@@ -23,7 +25,7 @@ const Movies = () => {
     window.scroll(0, 0);
     fetchMovies();
     // eslint-disable-next-line
-  }, [page]);
+  }, [page,genreforURL]);
 
   return (
     <div>

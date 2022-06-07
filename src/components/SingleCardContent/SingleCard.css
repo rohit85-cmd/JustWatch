@@ -20,6 +20,9 @@
       width: 90%;
       
     }
+    .poster {
+      height: 410px;
+    }
   }
   
   .poster {
@@ -27,11 +30,7 @@
     
   }
 
-  @media (max-width: 550px){
-    .poster {
-        height: 430px;
-      }
-  }
+
   
   .title {
     width: 100%;

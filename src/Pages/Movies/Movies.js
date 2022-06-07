@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import SingleContent from "../../components/SingleCardContent/SingleCard";
-import CustomPagination from "../../components/CustomPagination/Pagination";
+import Pagination from "../../components/CustomPagination/Pagination";
 import Genres from "../../components/Genres/Genres";
 import useGenre from "../../hook/useGenre";
 
@@ -53,7 +53,7 @@ const Movies = () => {
           ))}
       </div>
       {numOfPages > 1 && (
-        <CustomPagination setPage={setPage} numOfPages={500} />
+        <Pagination setPage={setPage} numOfPages={500} />
       )}
     </div>
   );

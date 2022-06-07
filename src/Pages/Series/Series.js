@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Genres from "../../components/Genres/Genres";
-import CustomPagination from "../../components/CustomPagination/Pagination";
+import Pagination from "../../components/CustomPagination/Pagination";
 import SingleCard from "../../components/SingleCardContent/SingleCard";
 import useGenre from "../../hook/useGenre";
 
@@ -54,7 +54,7 @@ const Series = () => {
           ))}
       </div>
       {numOfPages > 1 && (
-        <CustomPagination setPage={setPage} numOfPages={numOfPages} />
+        <Pagination setPage={setPage} numOfPages={numOfPages} />
       )}
     </div>
   );
